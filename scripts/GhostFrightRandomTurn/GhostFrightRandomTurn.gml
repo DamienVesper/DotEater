@@ -2,12 +2,14 @@ var Speed = argument0;
 
 
 //Set speed to the argument passed
+//Scope Error (oGhostParent.speed or speed ?)
 speed = Speed;
 
-//If direction and next direction are different
-//center the tile and 0 out the speed, set direction
-//to new directoin and skip rest
-
+/*
+If direction and next direction are different
+center the tile and 0 out the speed, set direction
+to new direction and skip rest
+*/
 if (direction != NextDirection )
 {
 	x = GetCenterGridPos(GridX);
@@ -34,7 +36,7 @@ else
 	//Make ghost move slower in tunnel
 	if (GridY == 17 and (GridX <= 5 || GridX > 22))
 	{
-		speed = oGameManager.GhostTunnelSpeed;	
+		speed = oGameManager.GhostTunnelSpeed;
 	}
 	
 	//Red zone for ghosts to not go up in center lanes
@@ -44,9 +46,10 @@ else
 		NextDirectionUp = false; 
 	}
 	
-
+	//Shuffle List (List)
 	ds_list_shuffle(WhichDirection);
 	
+	//
 	for (i = 0; i <4; ++i)
 	{
 		if 	(NextDirectionUp == true
